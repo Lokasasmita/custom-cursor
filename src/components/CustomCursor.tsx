@@ -83,8 +83,8 @@ export default function CustomCursor({
     // ── velocity tracking for wiggle ──────────────────
     let prevX = 0;
     let prevTime = 0;
-    const maxRotation = 10; // degrees
-    const velocityThreshold = 1.5; // px/ms — velocity at which max rotation is reached
+    const maxRotation = 7; // degrees
+    const velocityThreshold = 0.8; // px/ms — velocity at which max rotation is reached
 
     // ── helpers ────────────────────────────────────────
     function findTrigger(target: EventTarget | null): HTMLElement | null {
