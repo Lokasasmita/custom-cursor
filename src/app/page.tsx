@@ -5,24 +5,21 @@ import PillCursor from "@/components/PillCursor";
 const cards = [
   {
     title: "Snow Summit",
-    image:
-      "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=800&fit=crop",
-    pillText: "View Product",
+    image: "/img2.jpg",
+    pillText: "See Product",
     pillColor: "#000000",
     pillTextColor: "#ffffff",
   },
   {
     title: "Trail Runner",
-    image:
-      "https://images.unsplash.com/photo-1526401485004-46910ecc8e51?w=600&h=800&fit=crop",
-    pillText: "Shop Now",
+    image: "/img5.jpg",
+    pillText: "Buy Now",
     pillColor: "#ea580c",
     pillTextColor: "#000000",
   },
   {
     title: "Kinetic Athletics",
-    image:
-      "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&h=800&fit=crop",
+    image: "/img9.jpg",
     pillText: "View Event",
     pillColor: "#7dd3d8",
     pillTextColor: "#000000",
@@ -48,7 +45,7 @@ export default function Home() {
               data-pill-text={card.pillText}
               data-pill-color={card.pillColor}
               data-pill-text-color={card.pillTextColor}
-              className="relative overflow-hidden rounded-2xl aspect-[3/4] group"
+              className="relative overflow-hidden rounded-xl aspect-[3/4] group"
             >
               <img
                 src={card.image}
