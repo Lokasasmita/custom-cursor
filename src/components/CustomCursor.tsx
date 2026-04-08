@@ -84,6 +84,7 @@ export default function CustomCursor({
     let prevX = 0;
     let prevTime = 0;
     const maxRotation = 10; // degrees
+    const velocityThreshold = 1.5; // px/ms — velocity at which max rotation is reached
 
     // ── helpers ────────────────────────────────────────
     function findTrigger(target: EventTarget | null): HTMLElement | null {
@@ -165,12 +166,13 @@ export default function CustomCursor({
       xTo(e.clientX);
       yTo(e.clientY);
 
-      // velocity-based wiggle rotation
+      // velocity-based wiggle rotation (quadratic curve for natural feel)
       const now = performance.now();
       const dt = now - prevTime;
       if (dt > 0 && prevTime > 0) {
         const vx = (e.clientX - prevX) / dt; // px/ms
-        const rot = Math.max(-maxRotation, Math.min(maxRotation, vx * 18));
+        const normalized = Math.min(Math.abs(vx) / velocityThreshold, 1);
+        const rot = Math.sign(vx) * normalized * normalized * maxRotation;
         rotTo(rot);
       }
       prevX = e.clientX;
