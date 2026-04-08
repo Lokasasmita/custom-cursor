@@ -2,38 +2,38 @@
 
 import Image from "next/image";
 import gsap from "gsap";
-import PillCursor from "@/components/PillCursor";
+import CustomCursor from "@/components/CustomCursor";
 
 const cards = [
   {
     title: "Mclaren",
     image: "/img2.jpg",
-    pillText: "See Product",
-    pillColor: "#000000",
-    pillTextColor: "#ffffff",
+    cursorText: "See Product",
+    cursorColor: "#000000",
+    cursorTextColor: "#ffffff",
   },
   {
     title: "Porsche",
     image: "/img5.jpg",
-    pillText: "Buy Now",
-    pillColor: "#ea580c",
-    pillTextColor: "#000000",
+    cursorText: "Buy Now",
+    cursorColor: "#ea580c",
+    cursorTextColor: "#000000",
   },
   {
     title: "Ferrari",
     image: "/img9.jpg",
-    pillText: "View Event",
-    pillColor: "#7dd3d8",
-    pillTextColor: "#000000",
+    cursorText: "View Event",
+    cursorColor: "#7dd3d8",
+    cursorTextColor: "#000000",
   },
 ];
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f0f0f0]">
-      <PillCursor />
+      <CustomCursor />
 
-      {/* Card grid — each card triggers the pill */}
+      {/* Card grid — each card triggers the label */}
       <section className="px-8 pt-40 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-zinc-900 mb-8">
           Hover Over Each Card!
@@ -43,10 +43,10 @@ export default function Home() {
           {cards.map((card) => (
             <div
               key={card.title}
-              data-pill-cursor
-              data-pill-text={card.pillText}
-              data-pill-color={card.pillColor}
-              data-pill-text-color={card.pillTextColor}
+              data-cursor-label
+              data-cursor-text={card.cursorText}
+              data-cursor-color={card.cursorColor}
+              data-cursor-text-color={card.cursorTextColor}
               className="relative overflow-hidden rounded-xl aspect-[3/4] group"
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, {

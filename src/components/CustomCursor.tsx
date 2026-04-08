@@ -3,44 +3,44 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-export interface PillCursorConfig {
+export interface CustomCursorConfig {
   /** Size of the dot when not hovering a trigger (px) */
   dotSize?: number;
-  /** Height of the pill when expanded (px) */
-  pillHeight?: number;
-  /** Horizontal padding inside the pill (px) */
-  pillPaddingX?: number;
+  /** Height of the label when expanded (px) */
+  labelHeight?: number;
+  /** Horizontal padding inside the label (px) */
+  labelPaddingX?: number;
   /** Duration for the mouse-follow smoothing — lower = snappier */
   followDuration?: number;
   /** Duration of the pop/shrink morph animation */
   morphDuration?: number;
-  /** Default pill background color */
+  /** Default label background color */
   defaultColor?: string;
-  /** Default pill text color */
+  /** Default label text color */
   defaultTextColor?: string;
   /** Z-index of the cursor element */
   zIndex?: number;
 }
 
 /**
- * PillCursor — a custom cursor that morphs into a pill over `[data-pill-cursor]` elements.
+ * CustomCursor — a custom cursor that morphs into a label over `[data-cursor-label]` elements.
  *
  * Place once in your layout. Mark trigger sections with:
- *   data-pill-cursor
- *   data-pill-text="View Product"
- *   data-pill-color="#000"
- *   data-pill-text-color="#fff"
+ *   data-cursor-label
+ *   data-cursor-text="View Product"
+ *   data-cursor-color="#000"
+ *   data-cursor-text-color="#fff"
  */
-export default function PillCursor({
+export default function CustomCursor({
   dotSize = 12,
-  pillHeight = 36,
-  pillPaddingX = 20,
+  labelHeight = 36,
+  labelPaddingX = 20,
   followDuration = 0.35,
   morphDuration = 0.35,
   defaultColor = "#ea580c",
   defaultTextColor = "#fff",
   zIndex = 9999,
-}: PillCursorConfig) {
+}: CustomCursorConfig) {
   const cursorRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
 
@@ -88,7 +88,7 @@ export default function PillCursor({
     // ── helpers ────────────────────────────────────────
     function findTrigger(target: EventTarget | null): HTMLElement | null {
       if (!target || !(target instanceof HTMLElement)) return null;
-      return target.closest("[data-pill-cursor]") as HTMLElement | null;
+      return target.closest("[data-cursor-label]") as HTMLElement | null;
     }
 
     function expandTo(trigger: HTMLElement) {
@@ -96,13 +96,13 @@ export default function PillCursor({
       activeTrigger = trigger;
       expanded = true;
 
-      const text = trigger.dataset.pillText || "";
-      const bgColor = trigger.dataset.pillColor || defaultColor;
-      const txtColor = trigger.dataset.pillTextColor || defaultTextColor;
+      const text = trigger.dataset.cursorText || "";
+      const bgColor = trigger.dataset.cursorColor || defaultColor;
+      const txtColor = trigger.dataset.cursorTextColor || defaultTextColor;
 
       textEl.textContent = text;
 
-      // measure text to calculate pill width
+      // measure text to calculate label width
       const measure = textEl.cloneNode(true) as HTMLSpanElement;
       measure.style.cssText =
         "position:absolute;visibility:hidden;white-space:nowrap;font-size:13px;font-weight:500;letter-spacing:0.02em";
@@ -111,13 +111,13 @@ export default function PillCursor({
       const textWidth = measure.offsetWidth;
       document.body.removeChild(measure);
 
-      const pillWidth = text ? textWidth + pillPaddingX * 2 : pillHeight;
+      const labelWidth = text ? textWidth + labelPaddingX * 2 : labelHeight;
 
       // pop open — snappy with mild overshoot (no elastic width bounce)
       gsap.to(el, {
-        width: pillWidth,
-        height: pillHeight,
-        borderRadius: pillHeight / 2,
+        width: labelWidth,
+        height: labelHeight,
+        borderRadius: labelHeight / 2,
         backgroundColor: bgColor,
         opacity: 1,
         scale: 1,
@@ -136,7 +136,7 @@ export default function PillCursor({
       });
     }
 
-    function hidePill() {
+    function hideLabel() {
       activeTrigger = null;
       expanded = false;
 
@@ -203,7 +203,7 @@ export default function PillCursor({
       if (toTrigger === fromTrigger) return;
 
       // truly leaving — shrink and hide
-      hidePill();
+      hideLabel();
     }
 
     // ── mouse leaves viewport ──────────────────────────
@@ -227,8 +227,8 @@ export default function PillCursor({
     };
   }, [
     dotSize,
-    pillHeight,
-    pillPaddingX,
+    labelHeight,
+    labelPaddingX,
     followDuration,
     morphDuration,
     defaultColor,
