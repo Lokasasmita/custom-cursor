@@ -22,7 +22,7 @@ const cards = [
   {
     title: "Ferrari",
     image: "/img9.jpg",
-    cursorText: "View Event",
+    cursorText: "View Details",
     cursorColor: "#7dd3d8",
     cursorTextColor: "#000000",
   },
