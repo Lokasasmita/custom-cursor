@@ -36,7 +36,7 @@ export default function Home() {
       {/* Card grid — each card triggers the label */}
       <section className="px-8 pt-40 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-zinc-900 mb-8">
-          Hover Over Each Card!
+          Hover Over Each Card
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

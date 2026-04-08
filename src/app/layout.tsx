@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Custom Cursor Component",
   description:
-    "Smooth custom cursor that follows mouse movement with GSAP smoothness. Features text labels that appear when hovering elements. Desktop-only, auto-disabled on touch devices.",
+    "Smooth custom cursor that follows mouse movement with GSAP. Features text labels that appear when hovering elements. Desktop-only, auto-disabled on touch devices.",
 };
 
 export default function RootLayout({
