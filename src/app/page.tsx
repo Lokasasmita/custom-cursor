@@ -1,24 +1,25 @@
 "use client";
 
+import gsap from "gsap";
 import PillCursor from "@/components/PillCursor";
 
 const cards = [
   {
-    title: "Snow Summit",
+    title: "Mclaren",
     image: "/img2.jpg",
     pillText: "See Product",
     pillColor: "#000000",
     pillTextColor: "#ffffff",
   },
   {
-    title: "Trail Runner",
+    title: "Porsche",
     image: "/img5.jpg",
     pillText: "Buy Now",
     pillColor: "#ea580c",
     pillTextColor: "#000000",
   },
   {
-    title: "Kinetic Athletics",
+    title: "Ferrari",
     image: "/img9.jpg",
     pillText: "View Event",
     pillColor: "#7dd3d8",
@@ -32,7 +33,7 @@ export default function Home() {
       <PillCursor />
 
       {/* Card grid — each card triggers the pill */}
-      <section className="px-8 pt-24 max-w-6xl mx-auto">
+      <section className="px-8 pt-40 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-zinc-900 mb-8">
           Hover Over Each Card!
         </h2>
@@ -46,11 +47,27 @@ export default function Home() {
               data-pill-color={card.pillColor}
               data-pill-text-color={card.pillTextColor}
               className="relative overflow-hidden rounded-xl aspect-[3/4] group"
+              onMouseEnter={(e) => {
+                gsap.to(e.currentTarget, {
+                  scale: 0.98,
+                  duration: 0.3,
+                  ease: "power2.out",
+                  overwrite: "auto",
+                });
+              }}
+              onMouseLeave={(e) => {
+                gsap.to(e.currentTarget, {
+                  scale: 1,
+                  duration: 0.3,
+                  ease: "power2.out",
+                  overwrite: "auto",
+                });
+              }}
             >
               <img
                 src={card.image}
                 alt={card.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-6 left-6">
