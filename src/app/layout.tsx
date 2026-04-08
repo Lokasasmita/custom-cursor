@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pill Cursor Demo",
-  description: "Custom pill cursor component",
+  title: "Custom Cursor Component",
+  description:
+    "Smooth custom cursor that follows mouse movement with GSAP smoothness. Features text labels that appear when hovering elements. Desktop-only, auto-disabled on touch devices.",
 };
 
 export default function RootLayout({

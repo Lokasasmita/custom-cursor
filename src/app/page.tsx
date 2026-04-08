@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import gsap from "gsap";
 import PillCursor from "@/components/PillCursor";
 
@@ -64,10 +65,12 @@ export default function Home() {
                 });
               }}
             >
-              <img
+              <Image
                 src={card.image}
                 alt={card.title}
-                className="absolute inset-0 w-full h-full object-cover"
+                fill
+                sizes="(min-width: 768px) 33vw, 100vw"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-6 left-6">
