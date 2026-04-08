@@ -6,7 +6,7 @@ import CustomCursor from "@/components/CustomCursor";
 
 const cards = [
   {
-    title: "Mclaren",
+    title: "McLaren",
     image: "/img2.jpg",
     cursorText: "See Product",
     cursorColor: "#000000",
