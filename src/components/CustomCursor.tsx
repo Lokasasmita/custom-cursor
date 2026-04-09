@@ -26,10 +26,10 @@ export interface CustomCursorConfig {
  * CustomCursor — a custom cursor that morphs into a label over `[data-cursor-label]` elements.
  *
  * Place once in your layout. Mark trigger sections with:
- *   data-cursor-label
- *   data-cursor-text="View Product"
- *   data-cursor-color="#000"
- *   data-cursor-text-color="#fff"
+ *   data-label
+ *   data-label-text="View Product"
+ *   data-label-color="#000"
+ *   data-label-text-color="#fff"
  */
 export default function CustomCursor({
   dotSize = 12,
@@ -89,7 +89,7 @@ export default function CustomCursor({
     // ── helpers ────────────────────────────────────────
     function findTrigger(target: EventTarget | null): HTMLElement | null {
       if (!target || !(target instanceof HTMLElement)) return null;
-      return target.closest("[data-cursor-label]") as HTMLElement | null;
+      return target.closest("[data-label]") as HTMLElement | null;
     }
 
     function expandTo(trigger: HTMLElement) {
@@ -97,9 +97,9 @@ export default function CustomCursor({
       activeTrigger = trigger;
       expanded = true;
 
-      const text = trigger.dataset.cursorText || "";
-      const bgColor = trigger.dataset.cursorColor || defaultColor;
-      const txtColor = trigger.dataset.cursorTextColor || defaultTextColor;
+      const text = trigger.dataset.labelText || "";
+      const bgColor = trigger.dataset.labelColor || defaultColor;
+      const txtColor = trigger.dataset.labelTextColor || defaultTextColor;
 
       textEl.textContent = text;
 

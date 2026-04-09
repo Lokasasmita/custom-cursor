@@ -8,23 +8,23 @@ const cards = [
   {
     title: "McLaren",
     image: "/img2.jpg",
-    cursorText: "See Product",
-    cursorColor: "#000000",
-    cursorTextColor: "#ffffff",
+    labelText: "See Product",
+    labelColor: "#000000",
+    labelTextColor: "#ffffff",
   },
   {
     title: "Porsche",
     image: "/img5.jpg",
-    cursorText: "Buy Now",
-    cursorColor: "#ea580c",
-    cursorTextColor: "#000000",
+    labelText: "Buy Now",
+    labelColor: "#ea580c",
+    labelTextColor: "#000000",
   },
   {
     title: "Ferrari",
     image: "/img9.jpg",
-    cursorText: "View Details",
-    cursorColor: "#7dd3d8",
-    cursorTextColor: "#000000",
+    labelText: "View Details",
+    labelColor: "#00EC2E",
+    labelTextColor: "#000000",
   },
 ];
 
@@ -43,10 +43,10 @@ export default function Home() {
           {cards.map((card) => (
             <div
               key={card.title}
-              data-cursor-label
-              data-cursor-text={card.cursorText}
-              data-cursor-color={card.cursorColor}
-              data-cursor-text-color={card.cursorTextColor}
+              data-label
+              data-label-text={card.labelText}
+              data-label-color={card.labelColor}
+              data-label-text-color={card.labelTextColor}
               className="relative overflow-hidden rounded-xl aspect-[3/4] group"
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, {
